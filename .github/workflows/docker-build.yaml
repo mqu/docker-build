@@ -3,6 +3,9 @@ name: CI / docker-build-push
 on:
   push:
     branches: [ "main" ]
+  # trigger only with tags.
+  # tags:
+  #     - 'v*'
 
   workflow_dispatch:
     # Inputs the workflow accepts.
@@ -36,8 +39,8 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push
-      # you can run container with : 
-      #   docker run --rm -it  ghcr.io/mqu/docker-build:main (tag-name)
+        # you can run container with : 
+        #   docker run --rm -it  ghcr.io/mqu/docker-build:main (tag-name)
         uses: docker/build-push-action@v3
         with:
           push: true
