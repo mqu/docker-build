@@ -37,7 +37,7 @@ jobs:
       - name: docker build and run
         run: |
            docker build -t hello-world .
-           docker run --rm -it hello-world
+           docker run -t --rm -it hello-world
 
       # Runs a set of commands using the runners shell
       # - name: Run a multi-line script
@@ -49,4 +49,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: show ubuntu:latest version
-      run: docker run --rm -it ubuntu:latest cat /etc/os-release
+      run: docker run -t --rm -it ubuntu:latest cat /etc/os-release
