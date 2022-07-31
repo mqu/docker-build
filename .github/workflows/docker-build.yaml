@@ -1,11 +1,11 @@
-name: CI / docker-build-push-dockerhub
+name: CI / docker
 
 on:
   push:
-    branches: [ "main" ]
+  # branches: [ "main" ]
   # trigger only with tags.
     tags:
-     - 'v*'
+     - '*'
 
 #   workflow_dispatch:
 #     # Inputs the workflow accepts.
