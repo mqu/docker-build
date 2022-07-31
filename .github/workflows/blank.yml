@@ -48,5 +48,5 @@ jobs:
   docker-run:
     runs-on: ubuntu-latest
     steps:
-    - show ubuntu:latest version
+    - name: show ubuntu:latest version
       run: docker run --rm -it ubuntu:latest cat /etc/os-release
