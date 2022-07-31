@@ -43,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: mqu31/docker-build/latest 
+          tags: mqu31/docker-build:latest 
