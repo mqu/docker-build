@@ -4,8 +4,20 @@ on:
   push:
     branches: [ "main" ]
 
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      tag-name:
+        description: 'Tag name'
+        default: 'latest'
+        required: true
+      alt-tag-name:
+        description: 'Alternative tag name'
+        default: ''
+        required: false
+
 jobs:
-  dockerbuild-push:
+  manual-docker-build-push:
     runs-on: ubuntu-latest
     steps:
       - name repos checkout
@@ -24,7 +36,9 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push
+      # you can run container with : 
+      #   docker run --rm -it  ghcr.io/mqu/docker-build:main (tag-name)
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: user/app:latest
+          tags: user/app:${{ github.event.inputs.tag-name }}" 
