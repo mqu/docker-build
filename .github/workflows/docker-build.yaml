@@ -43,4 +43,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: user/app:${{ github.event.inputs.tag-name }}" 
+          tags: mqu31/docker-build/latest 
