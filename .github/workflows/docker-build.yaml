@@ -1,4 +1,4 @@
-name: CI / docker-build-push
+name: CI / docker-build-push-dockerhub
 
 on:
   push:
@@ -7,20 +7,20 @@ on:
   # tags:
   #     - 'v*'
 
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      tag-name:
-        description: 'Tag name'
-        default: 'latest'
-        required: true
-      alt-tag-name:
-        description: 'Alternative tag name'
-        default: ''
-        required: false
+#   workflow_dispatch:
+#     # Inputs the workflow accepts.
+#     inputs:
+#       tag-name:
+#         description: 'Tag name'
+#         default: 'latest'
+#         required: true
+#       alt-tag-name:
+#         description: 'Alternative tag name'
+#         default: ''
+#         required: false
 
 jobs:
-  buildpush:
+  build-and-push-to-dockerhub:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -39,7 +39,10 @@ jobs:
 
       - name: Build and push
         # you can run container with : 
-        #   docker run --rm -it  ghcr.io/mqu/docker-build:main (tag-name)
+        #  microsoft registry:
+        #     docker run --rm -it  ghcr.io/mqu/docker-build:main
+        #  dockerhub:
+        #     docker run --rm -it  docker pull mqu31/docker-build:latest
         uses: docker/build-push-action@v3
         with:
           push: true
